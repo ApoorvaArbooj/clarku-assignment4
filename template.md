@@ -3,7 +3,7 @@
 - Please copy the contents of this markdown as the starting template of your assingment. 
 - The resulting file from this programming assingment must be submitted to the private repo you submitted for my review during assignment one. 
 - The name of the file has to follow  naming convention:  *lastname*_week5.ipynb
-- There are XX sections of this assignments required to receive full credit. 
+- There are 4 sections of this assignments required to receive full credit. 
 - Please see that the expected file is a Jupyter notebook which contains Python code and markdown, just like shown in class and in my recap video from week 2. 
 
 # Section 1) Problem description
@@ -18,81 +18,81 @@ In particular, this neural net will be given an input matrix of zeros and ones. 
 
 '''
 
-import numpy as np 
-import matplotlib.pyplot as plt 
+    import numpy as np 
+    import matplotlib.pyplot as plt 
 
-# input data  (student to implement fetch function to grab inputs/outputs file and transform accordingly)
-# The location to fecth data is:  https://github.com/barnysanchez/clarku-assignment4/inputsANDoutputs.csv
+    # input data  (student to implement fetch function to grab inputs/outputs file and transform accordingly)
+    # The location to fecth data is:  https://github.com/barnysanchez/clarku-assignment4/inputsANDoutputs.csv
 
-inputs = np.array([[0, 1, 0],
-                   [0, 1, 1],])
+    inputs = np.array([[0, 1, 0],
+                    [0, 1, 1],])
 
-# output data
-outputs = np.array([[0], [0]])
+    # output data
+    outputs = np.array([[0], [0]])
 
-# create NeuralNetwork class
-class NeuralNetwork:
+    # create NeuralNetwork class
+    class NeuralNetwork:
 
-    # intialize variables in class
-    def __init__(self, inputs, outputs):
-        self.inputs  = inputs
-        self.outputs = outputs
-        # initialize weights as .50 for simplicity
-        self.weights = np.array([[.50], [.50], [.50]])
-        self.error_history = []
-        self.epoch_list = []
+        # intialize variables in class
+        def __init__(self, inputs, outputs):
+            self.inputs  = inputs
+            self.outputs = outputs
+            # initialize weights as .50 for simplicity
+            self.weights = np.array([[.50], [.50], [.50]])
+            self.error_history = []
+            self.epoch_list = []
 
-    #activation function ==> S(x) = 1/1+e^(-x)
-    def sigmoid(self, x, deriv=False):
-        if deriv == True:
-            return x * (1 - x)
-        return 1 / (1 + np.exp(-x))
+        #activation function ==> S(x) = 1/1+e^(-x)
+        def sigmoid(self, x, deriv=False):
+            if deriv == True:
+                return x * (1 - x)
+            return 1 / (1 + np.exp(-x))
 
-    # data will flow through the neural network.
-    def feed_forward(self):
-        self.hidden = self.sigmoid(np.dot(self.inputs, self.weights))
+        # data will flow through the neural network.
+        def feed_forward(self):
+            self.hidden = self.sigmoid(np.dot(self.inputs, self.weights))
 
-    # going backwards through the network to update weights
-    def backpropagation(self):
-        self.error  = self.outputs - self.hidden
-        delta = self.error * self.sigmoid(self.hidden, deriv=True)
-        self.weights += np.dot(self.inputs.T, delta)
+        # going backwards through the network to update weights
+        def backpropagation(self):
+            self.error  = self.outputs - self.hidden
+            delta = self.error * self.sigmoid(self.hidden, deriv=True)
+            self.weights += np.dot(self.inputs.T, delta)
 
-    # train the neural net for 25,000 iterations
-    def train(self, epochs=25000):
-        for epoch in range(epochs):
-            # flow forward and produce an output
-            self.feed_forward()
-            # go back though the network to make corrections based on the output
-            self.backpropagation()    
-            # keep track of the error history over each epoch
-            self.error_history.append(np.average(np.abs(self.error)))
-            self.epoch_list.append(epoch)
+        # train the neural net for 25,000 iterations
+        def train(self, epochs=25000):
+            for epoch in range(epochs):
+                # flow forward and produce an output
+                self.feed_forward()
+                # go back though the network to make corrections based on the output
+                self.backpropagation()    
+                # keep track of the error history over each epoch
+                self.error_history.append(np.average(np.abs(self.error)))
+                self.epoch_list.append(epoch)
 
-    # function to predict output on new and unseen input data                               
-    def predict(self, new_input):
-        prediction = self.sigmoid(np.dot(new_input, self.weights))
-        return prediction
+        # function to predict output on new and unseen input data                               
+        def predict(self, new_input):
+            prediction = self.sigmoid(np.dot(new_input, self.weights))
+            return prediction
 
-# create neural network   
-NN = NeuralNetwork(inputs, outputs)
-# train neural network
-NN.train()
+    # create neural network   
+    NN = NeuralNetwork(inputs, outputs)
+    # train neural network
+    NN.train()
 
-# create two new examples to predict                                   
-example = np.array([[1, 1, 0]])
-example_2 = np.array([[0, 1, 1]])
+    # create two new examples to predict                                   
+    example = np.array([[1, 1, 0]])
+    example_2 = np.array([[0, 1, 1]])
 
-# print the predictions for both examples                                   
-print(NN.predict(example), ' - Correct: ', example[0][0])
-print(NN.predict(example_2), ' - Correct: ', example_2[0][0])
+    # print the predictions for both examples                                   
+    print(NN.predict(example), ' - Correct: ', example[0][0])
+    print(NN.predict(example_2), ' - Correct: ', example_2[0][0])
 
-# plot the error over the entire training duration
-plt.figure(figsize=(15,5))
-plt.plot(NN.epoch_list, NN.error_history)
-plt.xlabel('Epoch')
-plt.ylabel('Error')
-plt.show()
+    # plot the error over the entire training duration
+    plt.figure(figsize=(15,5))
+    plt.plot(NN.epoch_list, NN.error_history)
+    plt.xlabel('Epoch')
+    plt.ylabel('Error')
+    plt.show()
 
 '''
 
