@@ -14,7 +14,9 @@ In particular, this neural net will be given an input matrix of zeros and ones. 
 
 # Section 2) This is your starting code for this assignment (20%)
 
-(If you copy this code block and execute it it will run. However in this section the request for full credit is to change the inputs and outputs to a function or functions that fetches the inputsANDoutputs.csv file and produces the needed input and output arrays for you. Failure to implement a function to do this will drop your score for this section to 0%. If you cannot figure it out and only alter the code to insert the values manually to proceed to the other section, will only earn you 5%)
+(If you copy this code block and execute it it will run. However in this section the request for full credit is to change the inputs and outputs to a function or functions that fetches the inputsANDoutputs.csv file and produces the needed input and output arrays for you. Failure to implement a function to do this will drop your score for this section to 0%. If you cannot figure it out and only alter the code to insert the values manually to proceed to the other sections, will only earn you 5%)
+
+The link for the training data is the following:  https://github.com/barnysanchez/clarku-assignment4/raw/main/inputANDoutputs.csv
 
 
 
@@ -22,7 +24,7 @@ In particular, this neural net will be given an input matrix of zeros and ones. 
     import matplotlib.pyplot as plt 
 
     # input data  (student to implement fetch function to grab inputs/outputs file and transform accordingly)
-    # The location to fecth data is:  https://github.com/barnysanchez/clarku-assignment4/inputsANDoutputs.csv
+    # The location to fecth data is:  https://github.com/barnysanchez/clarku-assignment4/raw/main/inputANDoutputs.csv
 
     inputs = np.array([[0, 1, 0],
                     [0, 1, 1],])
