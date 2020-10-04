@@ -16,7 +16,7 @@ In particular, this neural net will be given an input matrix of zeros and ones. 
 
 (If you copy this code block and execute it it will run. However in this section the request for full credit is to change the inputs and outputs to a function or functions that fetches the inputsANDoutputs.csv file and produces the needed input and output arrays for you. Failure to implement a function to do this will drop your score for this section to 0%. If you cannot figure it out and only alter the code to insert the values manually to proceed to the other section, will only earn you 5%)
 
-'''
+
 
     import numpy as np 
     import matplotlib.pyplot as plt 
@@ -94,7 +94,7 @@ In particular, this neural net will be given an input matrix of zeros and ones. 
     plt.ylabel('Error')
     plt.show()
 
-'''
+
 
 # Section 3) Determine the number of epochs needed to achieve 99% prediction accuracy. Manipulate the plot to clearly show this (35%)
 
