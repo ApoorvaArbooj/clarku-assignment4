@@ -6,8 +6,8 @@
 - There are 4 sections of this assignments required to receive full credit. 
 - Please see that the expected file is a Jupyter notebook which contains Python code and markdown, just like shown in class and in my recap video from week 2. 
 
-# Section 1) Problem description
-In this assignment you will get to practice with a very simple neural network implmenetation scratch. 
+# Section 1) Problem description (0%)
+In this assignment you will get to practice with a very simple neural network implementation from scratch. 
 This neural network, will have to learn what the important features are in the data to produce the output. 
 In particular, this neural net will be given an input matrix of zeros and ones. The output to each sample will be a single one or zero. The output will be determined by the number in the first feature column of the data samples. 
 
@@ -58,8 +58,8 @@ In particular, this neural net will be given an input matrix of zeros and ones. 
             delta = self.error * self.sigmoid(self.hidden, deriv=True)
             self.weights += np.dot(self.inputs.T, delta)
 
-        # train the neural net for 25,000 iterations
-        def train(self, epochs=25000):
+        # train the neural net for 5 iterations
+        def train(self, epochs=5):
             for epoch in range(epochs):
                 # flow forward and produce an output
                 self.feed_forward()
